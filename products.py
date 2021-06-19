@@ -1,12 +1,20 @@
-#讀取檔案
+import os #載入operating system模組
+
 products = []
-with open('products.csv', 'r', encoding='utf-8') as e:
-	for line in e:
-		if '品名,價格' in line:
-			continue #繼續
-		name, price = line.strip().split(',')
-		products.append([name, price])
-print(products)
+if os.path.isfile('products.csv'): #檢查檔案在不在
+	print('找到檔案！')
+
+	#讀取檔案
+	with open('products.csv', 'r', encoding='utf-8') as e:
+		for line in e:
+			if '品名,價格' in line:
+			    continue #繼續
+			name, price = line.strip().split(',')
+			products.append([name, price])
+	print(products)
+else:
+	print('找不到檔案~')
+
 
 #讓使用者輸入
 while True:
